@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
+{% comment %}
+    #This is used to display the locataion associated with tweets that have bene passsed. 
+{% endcomment %}
+
+
+
 
   {% block html_title%}
-      {% if is_staff %}
-          Moderate Tweets
-      {% else %}
-          Tweet History
-      {% endif %}
+      Tweets Maps
   {% endblock %} 
 
 
   {% block head_html %}
     <link rel="stylesheet/less" type="text/css" href="{{STATIC_URL}}/css/styles.less">
-{% endblock %} 
+    <!--script type="text/javascript" src="https://www.google.com/jsapi"></script-->
+    <!--script type="text/javascript"
+    src="https://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=false">
+    </script-->
+  {% endblock %} 
 
 
 
@@ -31,7 +37,12 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     {% block js_script_block %}
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvGploClrR6JK2cwMqCpPvmbrzmRibIII&sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=visualization&key=AIzaSyBvGploClrR6JK2cwMqCpPvmbrzmRibIII&sensor=false"></script>
+    <!--script type="text/javascript">
+      //$(function() {
+         google.load("visualization", "1", {packages: ["map"]});
+      //});
+    </script-->
     <script src="{{STATIC_URL}}/js/underscore-min.js"></script>  
     <script src="{{STATIC_URL}}/js/backbone-min.js"></script>  
 
@@ -44,4 +55,5 @@
     <script src="{{STATIC_URL}}/bootstrap/js/bootstrap-transition.js"></script>
     <script src="{{STATIC_URL}}/bootstrap/js/bootstrap-alert.js"></script>
     <script src="{{STATIC_URL}}/bootstrap/js/bootstrap-modal.js"></script>
+
     {% endblock %}

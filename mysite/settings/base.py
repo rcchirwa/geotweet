@@ -12,6 +12,9 @@ PROJECT_ROOT = here("..")
 # folder(s) we pass it starting at the parent directory of the current file.
 root = lambda * x: os.path.join(os.path.abspath(PROJECT_ROOT), *x)
 
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -67,7 +70,7 @@ STATIC_ROOT = root("..","static")#root("..","mysite/static")
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
 #STATIC_URL = '/static/'
-STATIC_URL = '/assets/'#root("tweets/static")
+STATIC_URL = '/static/'#root("tweets/static")
 #STATIC_URL =  PROJECT_ROOT + "/tweets/static"
 
 #ADMIN_MEDIA_PREFIX = '/static/admin/'

@@ -1,15 +1,8 @@
 	$(function(){
-
-
-
-		function initialize() {
-			var mapMarkersView = new window.MapMarkersView();
-			console.log(mapMarkersView.geomap);
-	  	}
+//To DO: port this to backbone.js
 
 
 	  	var mapMarkersView = new window.MapMarkersView();
-
 
 
 		//this handles the tweet submission. 
@@ -22,18 +15,18 @@
 			//get what is in the textarea
 			var tweet_string = $('#tweet_text').val();
 
-			//I like to to see the best in people so lets assume clean
-			var status = "clean";
-
 
 			var lat_out = 0; 
   			var long_out = 0;
 	  		
 			var send_tweet = function(gotCoordinatesIn)
 			{
+				//get uri from the form
 				var uri = $('form').attr('action');
+
+
+				//retrieve the token
 		  		var csrfToken = $('input[name="csrfmiddlewaretoken"]').val();
-		  		//var gotCoordinates = gotCoordinatesIn;
 
 		  		//data to send in json object to the server
 				var formData = {csrfmiddlewaretoken: csrfToken, tweet: tweet_string, status: status,latitude: lat_out,longitude: long_out,gotCoordinates: gotCoordinatesIn};
@@ -69,15 +62,17 @@
 	 				
 	 				$('#tweet_text').val('');
         			$(this).prop('disabled', false);
-        			$('#word-counter').text(140)
+        			$('#word-counter').text(140);
         		},
         		error: function(jqXHR,textstatus,message) {
-        			this.after_tweet_modal("Error: " +textstatus,message);
+        			this.after_tweet_modal("Error: " +textstatus, message);
             		console.log("jqXHR.status: " + jqXHR.status);
-                	console.log("teststatus: " + textstatus);
-                	console("message: " + message);
+                	console.log("textstatus: " + textstatus);
+                	//console.log("message: " + message);
+                	//alert("ok");
         		}
     		}).always(function() { 
+    			//analougous to a fnally in other languages
     			$('#tweet_btn').prop('disabled', false).addClass('btn-primary').text('Tweet');	
     			});  
 			}//end send tweet function
@@ -147,8 +142,9 @@
 		}
 
 		//This handles any modification or change in the text area
-		$('#tweet_text').on('keyup keypress blur change', function(e){
+		$('#tweet_text').on('keyup keypress keydown', function(e){
 			toggle_warning = tweet_keylogger($(this),toggle_warning);
 		});
+
 
 	})/*end jquery*/

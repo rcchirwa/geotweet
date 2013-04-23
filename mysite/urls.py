@@ -7,7 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
-)
+  )
 
 #use imported import tweets app url patterns to use here
 urlpatterns += tweet_url_patterns;

@@ -23,8 +23,21 @@ consumer_secret = twitter_keys["consumer_secret"]
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)
 
+
+logging.info ( "%s %s" % (consumer_key, consumer_secret))
+logging.info ( "%s %s" % (access_token, access_token_secret))
+
 #this creates the authorization.authentication to the api call 
 api = tweepy.API(auth)
+
+#public_tweets = tweepy.api.public_timeline()
+#for tweet in public_tweets:
+#    logging.info(tweet.text)
+
+#logging.info("*********************************888")
+#logging.info(api.me())
+#logging.info("*********************************888")
+
 
 '''
 The function below is used to post a tweet to the timeline as well as 
@@ -33,9 +46,19 @@ collect information from twitter that we would like to house in our datastore
 
 def postTweet(tweet,gotCoordinates):
 
+	#set the text we want to send
 	tweet_text = tweet.tweet
+
+	#logging.info(api.me())
+	#logging.info(api.user())
+
+	logging.info("**********************")
+	logging.info(tweet.tweet)
+	logging.info(tweet.latitude)
+	logging.info(tweet.longitude)
 	
-	#this post that actual tweet
+	#this post the actual tweet
+
 	if gotCoordinates:  
 		tester = api.update_status(tweet.tweet,'',tweet.latitude,tweet.longitude)
 	else:
@@ -82,7 +105,6 @@ def postTweet(tweet,gotCoordinates):
 '''
 The function pulls tweet data based on an id and returns the json string object
 '''
-
 def tweet_json_from_url(id_str): 
 	tweetCallURL = "https://api.twitter.com/1/statuses/oembed.json?id=%s"%id_str
 

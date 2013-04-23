@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 
+{% comment %}
+    #This is the page where the tweets are sent
+{% endcomment %}
 
 
 {% block html_title%}
@@ -40,9 +43,6 @@
               <input name="status" type="hidden" value="clean">
             </div>
 
-            <!--div class="control-group">
-              <span class="controls text-right" id="word-counter">140</span>
-            </div-->
             <div class="control-group">
               <div class="controls">
                 <span class="pull-left" id="word-counter">140</span>
@@ -51,17 +51,7 @@
             </div>
           </form>
         </div>
-        <!--div class="span0 offset6">
-        </div>
-      </div>
 
-
-
-
-      <div class="row">
-        <div class="span6 offset3">
-          <div id="map-canvas"></div>
-        </div-->
         <div class="span6 offset3">
           <div id="map-canvas"></div>
         </div>      
