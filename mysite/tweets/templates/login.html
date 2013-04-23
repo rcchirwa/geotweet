@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+
+{% block html_title%}
+  Welcome | Login 
+{% endblock %}
+
+  {% block nav_menu_block %}
+      {% include "login_menu.html" %}
+  {% endblock %}
+
+
+  {% block container_block %}
+  <div class="container">
+
+    <!-- Main hero unit for a primary marketing message or call to action -->
+  
+
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="span8 offset4">
+        <div class="branding">
+          <h1>Geo Tweet App</h1>
+        </div>
+      </div>
+      <div class="span0 offset4">
+        &nbsp;
+      </div>
+    </div>
+
+
+
+  </div> <!-- /container -->
+  {% endblock %}
+
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  {% block js_script_block %}
+    <script src="{{STATIC_URL}}/js/jquery.min.js"></script>
+  {% endblock %}

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+
+  {% block html_title%}
+      {% if is_staff %}
+          Moderate Tweets
+      {% else %}
+          Tweet History
+      {% endif %}
+  {% endblock %} 
+
+
+  {% block head_html %}
+    <link rel="stylesheet/less" type="text/css" href="{{STATIC_URL}}/css/styles.less">
+{% endblock %} 
+
+
+
+  {% block nav_menu_block %}
+      {% include "logged_in_menu.html" %}
+  {% endblock %}
+
+
+
+  {% block container_block %}
+    <div class="container">
+      <div id="map-canvas"></div>
+    <div><!--container end -->
+  {% endblock %}
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    {% block js_script_block %}
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvGploClrR6JK2cwMqCpPvmbrzmRibIII&sensor=false"></script>
+    <script src="{{STATIC_URL}}/js/underscore-min.js"></script>  
+    <script src="{{STATIC_URL}}/js/backbone-min.js"></script>  
+
+
+    <script src="{{STATIC_URL}}/js/tweetMaps.js"></script>
+    <script src="{{STATIC_URL}}/js/springtourMaps.js"></script>
+
+
+
+    <script src="{{STATIC_URL}}/bootstrap/js/bootstrap-transition.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/js/bootstrap-alert.js"></script>
+    <script src="{{STATIC_URL}}/bootstrap/js/bootstrap-modal.js"></script>
+    {% endblock %}

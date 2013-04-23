@@ -1,0 +1,15 @@
+*.pyc
+*.*~
+mysite/settings/local.py
+
+#excluded libraries
+mysite/tweets/assets/js/geochecker.js
+mysite/tweets/assets/fonts
+mysite/tweets/assets/images
+mysite/tweets/assets/img
+mysite/static
+static/
+*_db
+mysite/tweets/management
+
+*bootstrap*
