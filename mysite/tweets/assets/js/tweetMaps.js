@@ -1,7 +1,5 @@
 (function($){
 
-
-
 	//this allows that map to play nice with boostrap
  	$(window).resize(function () {
 	    var h = $(window).height(),
@@ -17,19 +15,19 @@
   var MapCoord = Backbone.Model.extend({
   		//initialize the marker with points
 		initialize: function(){
-							this.marker = new google.maps.Marker({				
-									position: new google.maps.LatLng(this.get("latitude"), this.get("longitude")),
-									geomap: this.geomap
-							});
-				   		},
+					this.marker = new google.maps.Marker({				
+							position: new google.maps.LatLng(this.get("latitude"), this.get("longitude")),
+							geomap: this.geomap
+					});
+				   	},
 		//this is used to render an info window associated with a marker
 		render: function(contentString){
-					var infowindow = new google.maps.InfoWindow({
-						content: contentString
-					});
+				var infowindow = new google.maps.InfoWindow({
+					content: contentString
+				});
 	
-						infowindow.open(this.geomap,this.marker);
-					}
+					infowindow.open(this.geomap,this.marker);
+				}
 	  });
 
 
@@ -52,10 +50,7 @@
 		    	_.bindAll(this, 'render');
 		},
 		render: function(){
-				/*marker = new google.maps.Marker({				
-        			position: new google.maps.LatLng(this.model.get("latitude"), this.model.get("longitude")),
-        			geomap: this.geomap
-      			});*/
+				//renders the map according to the context
       			this.marker.setMap(this.geomap);
 			}
 	  });
@@ -73,9 +68,9 @@
 	      	this.collection.bind('reset', this.addAll);
 	     	/*This renders that actual map to the screen*/
 	     	this.compilemap();
-		 },
+		},
 		 //responsible for compiling a map
-		 compilemap: function() {
+		compilemap: function() {
 		    var mapOptions = {
 		    	center: new google.maps.LatLng(42.3317302, -71.1061675),
 		      	//center: new google.maps.LatLng(42.266667, -71.8),
@@ -84,14 +79,14 @@
 		    };
 		    this.geomap = new google.maps.Map(document.getElementById("map-canvas"),
 		        mapOptions);
-		  },
-		  renderHeatMap: function(){
+		},
+		renderHeatMap: function(){
 
 		  	var heatmap = new google.maps.visualization.HeatmapLayer({
 	  			data: this.heatmapData
 			});
 			heatmap.setMap(this.geomap);
-		  },
+		},
 		//available to be used to render the 
 		render: function(){
 			this.addAll();
